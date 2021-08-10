@@ -73,6 +73,10 @@ class Macro extends Method
             $enclosingClass = $this->method->getClosureScopeClass();
         }
 
+        if (!$enclosingClass) {
+            return;
+        }
+
         /** @var \ReflectionMethod $enclosingMethod */
         $enclosingMethod = Collection::make($enclosingClass->getMethods())
             ->first(function (\ReflectionMethod $method) {
